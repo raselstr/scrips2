@@ -12,9 +12,9 @@
 
   <!-- CSS Libraries -->
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="<?= base_url()?>/template/assets/css/style.css">
-  <link rel="stylesheet" href="<?= base_url()?>/template/assets/css/components.css">
+  <!-- templates CSS -->
+  <link rel="stylesheet" href="<?= base_url()?>/templates/assets/css/style.css">
+  <link rel="stylesheet" href="<?= base_url()?>/templates/assets/css/components.css">
 </head>
 
 <body><script id="__bs_script__">//<![CDATA[
@@ -55,19 +55,19 @@
               </div>
               <div class="search-item">
                 <a href="#">
-                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/template/assets/img/products/product-3-50.png" alt="product">
+                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/templates/assets/img/products/product-3-50.png" alt="product">
                   oPhone S9 Limited Edition
                 </a>
               </div>
               <div class="search-item">
                 <a href="#">
-                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/template/assets/img/products/product-2-50.png" alt="product">
+                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/templates/assets/img/products/product-2-50.png" alt="product">
                   Drone X2 New Gen-7
                 </a>
               </div>
               <div class="search-item">
                 <a href="#">
-                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/template/assets/img/products/product-1-50.png" alt="product">
+                  <img class="mr-3 rounded" width="30" src="<?= base_url()?>/templates/assets/img/products/product-1-50.png" alt="product">
                   Headphone Blitz
                 </a>
               </div>
@@ -79,7 +79,7 @@
                   <div class="search-icon bg-danger text-white mr-3">
                     <i class="fas fa-code"></i>
                   </div>
-                  Stisla Admin Template
+                  Stisla Admin templates
                 </a>
               </div>
               <div class="search-item">
@@ -104,7 +104,7 @@
               <div class="dropdown-list-content dropdown-list-message">
                 <a href="#" class="dropdown-item dropdown-item-unread">
                   <div class="dropdown-item-avatar">
-                    <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle">
+                    <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-1.png" class="rounded-circle">
                     <div class="is-online"></div>
                   </div>
                   <div class="dropdown-item-desc">
@@ -115,7 +115,7 @@
                 </a>
                 <a href="#" class="dropdown-item dropdown-item-unread">
                   <div class="dropdown-item-avatar">
-                    <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-2.png" class="rounded-circle">
+                    <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-2.png" class="rounded-circle">
                   </div>
                   <div class="dropdown-item-desc">
                     <b>Dedik Sugiharto</b>
@@ -125,7 +125,7 @@
                 </a>
                 <a href="#" class="dropdown-item dropdown-item-unread">
                   <div class="dropdown-item-avatar">
-                    <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-3.png" class="rounded-circle">
+                    <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-3.png" class="rounded-circle">
                     <div class="is-online"></div>
                   </div>
                   <div class="dropdown-item-desc">
@@ -136,7 +136,7 @@
                 </a>
                 <a href="#" class="dropdown-item">
                   <div class="dropdown-item-avatar">
-                    <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-4.png" class="rounded-circle">
+                    <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-4.png" class="rounded-circle">
                   </div>
                   <div class="dropdown-item-desc">
                     <b>Ardian Rahardiansyah</b>
@@ -146,7 +146,7 @@
                 </a>
                 <a href="#" class="dropdown-item">
                   <div class="dropdown-item-avatar">
-                    <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-5.png" class="rounded-circle">
+                    <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-5.png" class="rounded-circle">
                   </div>
                   <div class="dropdown-item-desc">
                     <b>Alfa Zulkarnain</b>
@@ -173,7 +173,7 @@
                     <i class="fas fa-code"></i>
                   </div>
                   <div class="dropdown-item-desc">
-                    Template update is available now!
+                    templates update is available now!
                     <div class="time text-primary">2 Min Ago</div>
                   </div>
                 </a>
@@ -209,7 +209,7 @@
                     <i class="fas fa-bell"></i>
                   </div>
                   <div class="dropdown-item-desc">
-                    Welcome to Stisla template!
+                    Welcome to Stisla templates!
                     <div class="time">Yesterday</div>
                   </div>
                 </a>
@@ -220,7 +220,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="<?= base_url()?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="<?= base_url()?>/templates/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
@@ -429,13 +429,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="<?= base_url()?>/template/assets/js/stisla.js"></script>
+  <script src="<?= base_url()?>/templates/assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
 
-  <!-- Template JS File -->
-  <script src="<?= base_url()?>/template/assets/js/scripts.js"></script>
-  <script src="<?= base_url()?>/template/assets/js/custom.js"></script>
+  <!-- templates JS File -->
+  <script src="<?= base_url()?>/templates/assets/js/scripts.js"></script>
+  <script src="<?= base_url()?>/templates/assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
 </body>
