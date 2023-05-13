@@ -3,7 +3,7 @@
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Master Data</span></a>
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="index-0.html">Pegawai</a></li>
-        <li><a class="nav-link" href="<?= site_url('opd'); ?>">OPD</a></li>
+        <li><a class="nav-link" href="<?= site_url('opds'); ?>">OPD</a></li>
     </ul>
 </li>
 <li class="menu-header">DATA</li>

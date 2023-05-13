@@ -29,7 +29,7 @@ class Opd extends Migration
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
-            'update_at' => [
+            'updated_at' => [
                 'type'      => 'DATETIME',
                 'null'      => true,
             ],

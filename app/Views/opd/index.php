@@ -17,6 +17,9 @@
     <div class="section-body">
         <div class="card">
           <div class="card-header">
+            <div class="buttons">
+              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Tambah Data</a>
+            </div>
             <h4>Daftar Organisasi Perangkat Daerah</h4>
           </div>
           <div class="card-body p-0">
@@ -24,10 +27,10 @@
               <table class="table table-striped table-md">
                 <tr>
                   <th>#</th>
-                  <th>KODE OPD</th>
-                  <th>NAMA OPD</th>
+                  <th>Kode Opd</th>
+                  <th>Nama Opd</th>
                   <th>Created At</th>
-                  <th>Action</th>
+                   <th>Action</th>
                 </tr>
                 <?php foreach ($opd as $key => $value) : ?>
                 <tr>
@@ -35,8 +38,10 @@
                   <td><?= $value->opd_kode; ?></td>
                   <td><?= $value->opd_nama; ?></td>
                   <td><?= $value->created_at; ?></td>
-                  <td><div class="badge badge-success">Active</div></td>
-                  <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                  <td>
+                    <a href="#" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="#" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-trash-alt"></i></a>
+                  </td>
                 </tr>
                 <?php endforeach; ?>
               </table>

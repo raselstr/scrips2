@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourcePresenter;
 use App\Models\OpdModel;
 
-class Opd extends ResourcePresenter
+class Opds extends ResourcePresenter
 {
     function __construct()
     {
@@ -41,9 +41,9 @@ class Opd extends ResourcePresenter
      */
     public function new()
     {
-        //
+        return view('opd/new');
     }
-
+    
     /**
      * Process the creation/insertion of a new resource object.
      * This should be a POST.
@@ -52,7 +52,10 @@ class Opd extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->opd->insert($data);
+        return redirect()->to(site_url('opds'))->with('success','Data Berhasil disimpan');
+
     }
 
     /**
