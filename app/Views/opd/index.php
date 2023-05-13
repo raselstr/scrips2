@@ -18,7 +18,7 @@
         <div class="card">
           <div class="card-header">
             <div class="buttons">
-              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Tambah Data</a>
+              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
             </div>
             <h4>Daftar Organisasi Perangkat Daerah</h4>
           </div>
