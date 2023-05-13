@@ -27,9 +27,19 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
+$routes->get('create-db', function() {
+    $forge = \Config\Database::forge();
+if ($forge->createDatabase('dbscripsi2')) 
+    {
+        echo 'Database created!';
+    }
+});
+
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('perjadin-home', 'Perjadin::index');
 // $routes->addRedirect('/', 'home');
 
 /*

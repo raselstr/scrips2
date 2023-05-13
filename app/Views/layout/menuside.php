@@ -6,7 +6,8 @@
         <li><a class="nav-link" href="index.html">OPD</a></li>
     </ul>
 </li>
-<li class="menu-header">Starter</li>
+<li class="menu-header">DATA</li>
+<li class="active"><a class="nav-link" href="<?= site_url('perjadin-home'); ?>"><i class="fas fa-fire"></i> <span>Perjadin</span></a></li>
 <li class="nav-item dropdown">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
     <ul class="dropdown-menu">
