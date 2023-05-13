@@ -45,6 +45,8 @@ $routes->get('login','Auth::index');
 $routes->get('perjadin-home', 'Perjadin::index');
 // $routes->addRedirect('/', 'home');
 
+$routes->presenter('opd');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
