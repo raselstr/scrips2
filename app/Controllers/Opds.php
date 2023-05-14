@@ -112,6 +112,7 @@ class Opds extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        //
+        $this->opd->where('opd_id', $id)->delete();
+        return redirect()->to(site_url('opds'))->with('success','Data Berhasil di Hapus');
     }
 }
