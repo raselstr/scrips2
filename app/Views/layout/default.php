@@ -18,9 +18,10 @@
   <link rel="stylesheet" href="<?= base_url()?>/templates/assets/css/components.css">
 </head>
 
-<body><script id="__bs_script__">//<![CDATA[
+<body>
+  <!-- <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.27.10'><\/script>".replace("HOST", location.hostname));
-//]]></script>
+//]]></script> -->
 
   <div id="app">
     <div class="main-wrapper">
@@ -273,7 +274,7 @@
 
   <!-- General JS Scripts -->
   <script src="<?= base_url()?>/templates/assets/js/jquery.min.js"></script>
-  <script src="<?= base_url()?>/templates/assets/js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <!-- <script src="<?= base_url()?>/templates/assets/js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
   <!-- <script src="<?= base_url()?>/templates/assets/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   <script src="<?= base_url()?>/templates/assets/js/jquery.nicescroll.min.js"></script>
   <script src="<?= base_url()?>/templates/assets/js/moment.min.js"></script>
