@@ -45,6 +45,11 @@ $routes->get('login','Auth::index');
 $routes->get('perjadin-home', 'Perjadin::index');
 // $routes->addRedirect('/', 'home');
 
+$routes->get('opds/trash','Opds::trash');
+$routes->get('opds/restore/(:any)','Opds::restore/$1');
+$routes->get('opds/restore','Opds::restore');
+$routes->delete('opds/delete2/(:segment)','Opds::delete2/$1');
+$routes->delete('opds/delete2','Opds::delete2');
 $routes->presenter('opds');
 
 /*

@@ -7,10 +7,10 @@
 <?= $this->section('content'); ?>
   <section class="section">
     <div class="section-header">
-      <h1>Organisasi Perangkat Daerah</h1>
+      <h1>Organisasi Perangkat Daerah yang sudah di Hapus</h1>
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="<?= site_url('/'); ?>">Dashboard</a></div>
-        <div class="breadcrumb-item">Data Perjadin</div>
+        <div class="breadcrumb-item">OPD yang sudah dihapus</div>
       </div>
     </div>
 
@@ -31,22 +31,26 @@
             <button class="close" data-dismiss="alert">
                 <span>&times;</span>
             </button>
-                <b>Success !!</b>
+                <b>Error !!</b>
                 <?= session()->getFlashdata('error'); ?>
             </div>
         </div>
     <?php endif; ?>
 
-
     <div class="section-body">
         <div class="card">
           <div class="card-header">
             <div class="buttons">
-              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
+              <a href="<?= site_url('opds'); ?>" class="btn btn-icon icon-left btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
             </div>
             <h4>Daftar Organisasi Perangkat Daerah</h4>
             <div class="card-header-action">
-              <a href="<?= site_url('opds/trash'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Trash</a>
+              <a href="<?= site_url('opds/restore'); ?>" class="btn btn-info"> Restore All</a>
+                <form action="<?= site_url('opds/delete2'); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
+                <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger btn-sm" >Delete All Permanently</a></button>
+                </form>
             </div>
           </div>
           <div class="card-body p-0">
@@ -56,7 +60,7 @@
                   <th>#</th>
                   <th>Kode Opd</th>
                   <th>Nama Opd</th>
-                  <th>Created At</th>
+                  <th>Deleted At</th>
                    <th>Action</th>
                 </tr>
                 <?php foreach ($opd as $key => $value) : ?>
@@ -64,12 +68,14 @@
                   <td><?= $key + 1; ?></td>
                   <td><?= $value->opd_kode; ?></td>
                   <td><?= $value->opd_nama; ?></td>
-                  <td><?= $value->created_at; ?></td>
+                  <td><?= $value->deleted_at; ?></td>
                   <td>
-                    <a href="<?= site_url('opds/edit/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                    <form action="<?= site_url('opds/delete/' .$value->opd_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
+                    <a href="<?= site_url('opds/restore/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info">Restore</a>
+                    <!-- <a href="<?= site_url('opds/delete2/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info">Delete Permanen</a> -->
+                    <form action="<?= site_url('opds/delete2/' .$value->opd_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
                       <?= csrf_field(); ?>
-                      <button class="btn btn-danger btn-sm" ><i class="fas fa-trash" ></i></a></button>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button class="btn btn-danger btn-sm" >Hapus Permanen</button>
                     </form>
                   </td>
                 </tr>

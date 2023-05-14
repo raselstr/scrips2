@@ -115,4 +115,40 @@ class Opds extends ResourcePresenter
         $this->opd->delete($id);
         return redirect()->to(site_url('opds'))->with('success','Data Berhasil di Hapus');
     }
+
+    public function trash()
+    {
+        $data['opd'] = $this->opd->onlyDeleted()->findAll();
+        return view('opd/trash', $data);
+    }
+
+    public function restore($id = null)
+    {
+        $this->db = \Config\Database::connect();
+        if($id != null) {
+            $this->db->table('opd')
+                ->set('deleted_at', null, true)
+                ->where(['opd_id'=>$id])
+                ->update();
+        } else {
+            $this->db->table('opd')
+                ->set('deleted_at', null, true)
+                ->where('deleted_at is NOT NULL', NULL, false)
+                ->update();
+        }
+        if($this->db->affectedRows() > 0){
+            return redirect()->to(site_url('opds/trash'))->with('success','Data Berhasil direstore');
+        }
+    }
+
+    public function delete2($id = null)
+    {
+        if($id != null){
+            $this->opd->delete($id, true);
+            return redirect()->to(site_url('opds/trash'))->with('success','Data Berhasil di Hapus Permanen');
+        } else {
+            $this->opd->purgeDeleted();
+            return redirect()->to(site_url('opds/trash'))->with('success','Data Berhasil di Hapus Permanen');
+        }
+    }
 }
