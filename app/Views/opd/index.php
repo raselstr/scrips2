@@ -40,9 +40,9 @@
                   <td><?= $value->created_at; ?></td>
                   <td>
                     <a href="<?= site_url('opds/edit/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                    <form action="<?= site_url('opds/delete/' .$value->opd_id); ?>" method="post" class="d-inline">
+                    <form action="<?= site_url('opds/delete/' .$value->opd_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
                       <?= csrf_field(); ?>
-                      <button class="btn btn-danger btn-sm" ><i class="fas fa-trash"></i></a></button>
+                      <button class="btn btn-danger btn-sm" ><i class="fas fa-trash" ></i></a></button>
                     </form>
                   </td>
                 </tr>
