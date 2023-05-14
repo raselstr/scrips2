@@ -67,7 +67,13 @@ class Opds extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        //
+        $opd = $this->opd->where('opd_id', $id)->first();
+        if(is_object($opd)){
+            $data['opd'] = $opd;
+            return view('opd/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -80,7 +86,9 @@ class Opds extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->opd->update($id, $data);
+        return redirect()->to(site_url('opds'))->with('success','Data Berhasil diUpdate');
     }
 
     /**

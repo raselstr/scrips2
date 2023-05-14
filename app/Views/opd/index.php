@@ -39,7 +39,7 @@
                   <td><?= $value->opd_nama; ?></td>
                   <td><?= $value->created_at; ?></td>
                   <td>
-                    <a href="#" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="<?= site_url('opds/edit/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
                     <a href="#" class="btn btn-icon btn-sm btn-warning"><i class="fas fa-trash-alt"></i></a>
                   </td>
                 </tr>
