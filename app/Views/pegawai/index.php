@@ -76,8 +76,9 @@
                     <td><?= $value->created_at; ?></td>
                     <td>
                       <a href="<?= site_url('pegawais/'.$value->pegawai_id.'/edit'); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                      <form action="<?= site_url('pegawais/delete/' .$value->pegawai_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
+                      <form action="<?= site_url('pegawais/'.$value->pegawai_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
                         <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger btn-sm" ><i class="fas fa-trash" ></i></a></button>
                       </form>
                     </td>
@@ -85,8 +86,10 @@
                   <?php endforeach; ?>
                 </tbody>
               </table>
+              
             </div>
           </div>
+          
           <div class="card-footer text-right">
             <nav class="d-inline-block">
               <ul class="pagination mb-0">
@@ -107,5 +110,6 @@
         </div>
       </div>
     </div>
+    
   </section>
 <?= $this->endSection(); ?>

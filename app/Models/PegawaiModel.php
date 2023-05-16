@@ -16,7 +16,7 @@ class PegawaiModel extends Model
     protected $allowedFields    = ['pegawai_nip','pegawai_nama','pegawai_alamat','pegawai_info','opd_id'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -43,7 +43,7 @@ class PegawaiModel extends Model
     {
         $builder = $this->db->table('pegawais');
         $builder->join('opd','opd.opd_id = pegawais.opd_id');
-        $query = $builder->get();
+        $query = $builder->getWhere(['pegawais.deleted_at' => null]);
         return $query->getResult();
 
     }

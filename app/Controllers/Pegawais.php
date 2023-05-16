@@ -20,7 +20,9 @@ class Pegawais extends ResourceController
      */
     public function index()
     {
+        
         $data['peg'] = $this->peg->getAll();
+        // dd($data); 
         return view('pegawai/index', $data);
     }
 
@@ -93,6 +95,7 @@ class Pegawais extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->peg->delete($id);
+        return redirect()->to(site_url('pegawais'))->with('success','Data Berhasil di Hapus');
     }
 }
