@@ -64,7 +64,14 @@ class Pegawais extends ResourceController
      */
     public function edit($id = null)
     {
-        return view('pegawai/edit');
+        $peg = $this->peg->find($id);
+        if(is_object($peg)){
+            $data['peg'] = $peg;
+            $data['opd'] = $this->opd->findAll();
+            return view('pegawai/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -74,7 +81,9 @@ class Pegawais extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->peg->update($id, $data);
+        return redirect()->to(site_url('pegawais'))->with('success','Data Berhasil diUpdate');
     }
 
     /**
