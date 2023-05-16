@@ -42,27 +42,48 @@
         <div class="card">
           <div class="card-header">
             <div class="buttons">
-              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
+              <a href="<?= site_url('pegawais/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
             </div>
             <h4>Daftar Pegawai Daerah</h4>
-            <div class="card-header-action">
-              <a href="<?= site_url('opds/trash'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Trash</a>
-            </div>
+            <!-- <div class="card-header-action">
+              <a href="<?= site_url('pegawais/trash'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Trash</a>
+            </div> -->
           </div>
           <div class="card-body p-0">
             <div class="table-responsive">
               <table class="table table-striped table-md">
-                <tbody>
+                <thead>
                     <tr>
                     <th>#</th>
                     <th>NIP</th>
                     <th>Nama Pegawai</th>
-                    <th>Tempat Kerja</th>
+                    <th>Alamat</th>
+                    <th>Info</th>
+                    <th>Opd</th>
                     <th>Created At</th>
                     <th>Action</th>
                     </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($peg as $key => $value) : ?>
+                  <tr>
+                    <td><?= $key + 1; ?></td>
+                    <td><?= $value->pegawai_nip; ?></td>
+                    <td><?= $value->pegawai_nama; ?></td>
+                    <td><?= $value->pegawai_alamat; ?></td>
+                    <td><?= $value->pegawai_info; ?></td>
+                    <td><?= $value->opd_nama; ?></td>
+                    <td><?= $value->created_at; ?></td>
+                    <td>
+                      <a href="<?= site_url('pegawais/'.$value->pegawai_id.'/edit'); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
+                      <form action="<?= site_url('pegawais/delete/' .$value->pegawai_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
+                        <?= csrf_field(); ?>
+                        <button class="btn btn-danger btn-sm" ><i class="fas fa-trash" ></i></a></button>
+                      </form>
+                    </td>
+                  </tr>
+                  <?php endforeach; ?>
                 </tbody>
-                
               </table>
             </div>
           </div>

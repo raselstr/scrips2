@@ -3,9 +3,16 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\OpdModel;
+use App\Models\PegawaiModel;
 
 class Pegawais extends ResourceController
 {
+    function __construct()
+    {
+        $this->peg = new PegawaiModel();
+        $this->opd = new OpdModel();
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -13,7 +20,8 @@ class Pegawais extends ResourceController
      */
     public function index()
     {
-        return view('pegawai/index');
+        $data['peg'] = $this->peg->getAll();
+        return view('pegawai/index', $data);
     }
 
     /**
@@ -33,7 +41,8 @@ class Pegawais extends ResourceController
      */
     public function new()
     {
-        return view('pegawai/new');
+        $data['opd'] = $this->opd->findAll();
+        return view('pegawai/new', $data);
     }
 
     /**
@@ -43,7 +52,9 @@ class Pegawais extends ResourceController
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->peg->insert($data);
+        return redirect()->to(site_url('pegawais'))->with('success','Data Berhasil disimpan');
     }
 
     /**
