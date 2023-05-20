@@ -98,4 +98,41 @@ class Pegawais extends ResourceController
         $this->peg->delete($id);
         return redirect()->to(site_url('pegawais'))->with('success','Data Berhasil di Hapus');
     }
+
+    public function trash()
+    {
+        $data['peg'] = $this->peg->onlyDeleted()->getDel();
+        return view('pegawai/trash', $data);
+    }
+
+    public function restore($id = null)
+    {
+        $this->db = \Config\Database::connect();
+        if($id != null) {
+            $this->db->table('pegawais')
+                ->set('pegawais.deleted_at', NULL,true)
+                ->where('pegawais.pegawai_id',$id)
+                ->update();
+        } else {
+            $this->db->table('pegawais')
+                ->set('pegawais.deleted_at', null)
+                ->where('pegawais.deleted_at is NOT NULL', NULL, false)
+                ->update();
+        }
+        
+        if($this->db->affectedRows() > 0){
+            return redirect()->to(site_url('pegawais/trash'))->with('success','Data Berhasil direstore');
+        }
+    }
+
+    public function delete2($id = null)
+    {
+        if($id != null){
+            $this->peg->delete($id, true);
+            return redirect()->to(site_url('pegawais/trash'))->with('success','Data Berhasil di Hapus Permanen');
+        } else {
+            $this->peg->purgeDeleted();
+            return redirect()->to(site_url('pegawais/trash'))->with('success','Data Berhasil di Hapus Permanen');
+        }
+    }
 }

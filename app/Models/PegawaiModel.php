@@ -47,4 +47,15 @@ class PegawaiModel extends Model
         return $query->getResult();
 
     }
+
+    function getDel()
+    {
+        $builder = $this->db->table('pegawais');
+        $builder->join('opd','opd.opd_id = pegawais.opd_id');
+        $query = $builder->getWhere('pegawais.deleted_at is NOT NULL',null, FALSE);
+        // $query   = db->query('SELECT * FROM my_table');
+        return $query->getResult();
+
+
+    }
 }
