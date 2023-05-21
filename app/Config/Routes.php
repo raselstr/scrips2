@@ -54,10 +54,11 @@ $routes->delete('opds/delete2','Opds::delete2');
 $routes->presenter('opds');
 
 $routes->get('pegawais/trash','Pegawais::trash');
-$routes->get('pegawais/(:any)/restore/','Opds::restore/$1');
-$routes->get('pegawais/restore','Opds::restore');
-$routes->delete('pegawais/delete2/(:segment)','Opds::delete2/$1');
-$routes->delete('pegawais/delete2','Opds::delete2');
+$routes->get('pegawais/restore/(:any)','pegawais::restore/$1');
+$routes->get('pegawais/restore','pegawais::restore');
+$routes->delete('pegawais/delete2/(:segment)','pegawais::delete2/$1');
+$routes->delete('pegawais/delete2','pegawais::delete2');
+
 $routes->resource('pegawais');
 
 /*

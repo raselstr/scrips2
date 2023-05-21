@@ -111,7 +111,7 @@ class Pegawais extends ResourceController
         if($id != null) {
             $this->db->table('pegawais')
                 ->set('pegawais.deleted_at', NULL,true)
-                ->where('pegawais.pegawai_id',$id)
+                ->where(['pegawais.pegawai_id'=> $id])
                 ->update();
         } else {
             $this->db->table('pegawais')
@@ -122,6 +122,8 @@ class Pegawais extends ResourceController
         
         if($this->db->affectedRows() > 0){
             return redirect()->to(site_url('pegawais/trash'))->with('success','Data Berhasil direstore');
+        } else {
+            echo "Salah";
         }
     }
 
