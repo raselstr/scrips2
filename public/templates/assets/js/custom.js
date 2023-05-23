@@ -6,7 +6,6 @@
  */
 
 "use strict";
-
 var path = location.pathname.split('/')
 var url = location.origin + '/' + path[1]
 
