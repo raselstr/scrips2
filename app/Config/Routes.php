@@ -50,6 +50,7 @@ $routes->get('opds/restore/(:any)','Opds::restore/$1');
 $routes->get('opds/restore','Opds::restore');
 $routes->delete('opds/delete2/(:segment)','Opds::delete2/$1');
 $routes->delete('opds/delete2','Opds::delete2');
+$routes->get('opds/export', 'Opds::export');
 
 $routes->presenter('opds');
 

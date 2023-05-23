@@ -46,6 +46,7 @@
             </div>
             <h4>Daftar Organisasi Perangkat Daerah</h4>
             <div class="card-header-action">
+              <a href="<?= site_url('opds/export'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Export XLS</a>
               <a href="<?= site_url('opds/trash'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Trash</a>
             </div>
           </div>
