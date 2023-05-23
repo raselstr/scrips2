@@ -275,11 +275,11 @@
 
   <!-- General JS Scripts -->
   <script src="<?= base_url()?>/templates/node_modules/jquery/dist/jquery.min.js"></script>
-  <!-- <script src="<?= base_url()?>/templates/assets/js/popper.min.js"></script> -->
+  <script src="<?= base_url()?>/templates/node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="<?= base_url()?>/templates/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="<?= base_url()?>/templates/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
-  <script src="<?= base_url()?>/templates/assets/js/jquery.dataTables.min.js"></script>
-  <script src="<?= base_url()?>/templates/assets/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url()?>/templates/node_modules/datatables/media/jd/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url()?>/templates/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?= base_url()?>/templates/assets/js/moment.min.js"></script>
   
   <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script> -->
