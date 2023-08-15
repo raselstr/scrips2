@@ -11,5 +11,10 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
+    public function loginProses()
+    {
+        echo 'lanjut login';
+    }
+
 
 }

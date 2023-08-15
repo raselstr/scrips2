@@ -41,6 +41,7 @@ if ($forge->createDatabase('dbscripsi2'))
 $routes->get('/', 'Home::index');
 
 $routes->get('login','Auth::index');
+$routes->post('loginProses','Auth::loginProses');
 
 $routes->get('perjadin-home', 'Perjadin::index');
 // $routes->addRedirect('/', 'home');

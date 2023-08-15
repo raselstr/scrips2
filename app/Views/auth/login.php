@@ -18,9 +18,10 @@
   <link rel="stylesheet" href="<?= base_url()?>/templates/assets/css/components.css">
 </head>
 
-<body><script id="__bs_script__">//<![CDATA[
+<body>
+  <!-- <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.27.10'><\/script>".replace("HOST", location.hostname));
-//]]></script>
+//]]></script> -->
 
   <div id="app">
     <section class="section">
@@ -33,9 +34,21 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Login</h4></div>
+                <?php if(session()->getFlashdata('error')) : ?>
+                    <div class="alert alert-danger alert-dismissible show fade">
+                        <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                            <b>Error !!</b>
+                            <?= session()->getFlashdata('error'); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <form method="POST" action="<?= site_url('loginProses'); ?>" class="needs-validation" novalidate="">
+                  <?= csrf_field(); ?>
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
@@ -72,22 +85,6 @@
                     </button>
                   </div>
                 </form>
-                <div class="text-center mt-4 mb-3">
-                  <div class="text-job text-muted">Login With Social</div>
-                </div>
-                <div class="row sm-gutters">
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                      <span class="fab fa-facebook"></span> Facebook
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                      <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                  </div>
-                </div>
-
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
