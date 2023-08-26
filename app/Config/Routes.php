@@ -52,6 +52,7 @@ $routes->get('opds/restore','Opds::restore');
 $routes->delete('opds/delete2/(:segment)','Opds::delete2/$1');
 $routes->delete('opds/delete2','Opds::delete2');
 $routes->get('opds/export', 'Opds::export');
+$routes->get('opds/import', 'Opds::import');
 
 $routes->presenter('opds');
 

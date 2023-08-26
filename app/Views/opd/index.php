@@ -46,6 +46,7 @@
             </div>
             <h4>Daftar Organisasi Perangkat Daerah</h4>
             <div class="card-header-action">
+              <a href="<?= site_url('opds/import'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Import XLS</a>
               <a href="<?= site_url('opds/export'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Export XLS</a>
               <a href="<?= site_url('opds/trash'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Trash</a>
             </div>
@@ -99,4 +100,27 @@
       </div>
     </div>
   </section>
+
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Import File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="<?= site_url('opd-import'); ?>" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <?= csrf_field() ?>
+            <input type="file" name="file_excel" id="file_excel" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <?= $this->endSection(); ?>
 <?= $this->endSection(); ?>
