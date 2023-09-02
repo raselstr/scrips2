@@ -11,6 +11,14 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
+    public function login()
+    {
+        // if(session('id_user')){
+        //     return redirect()->to(site_url('home'));
+        // }
+        // return view('auth/login');
+    }
+
     public function loginProses()
     {    
         $this->db = \Config\Database::connect();
@@ -29,7 +37,14 @@ class Auth extends BaseController
         } else {
             return redirect()->back()->with('error','Email tidak ditemukan');
         }
+        
+        
     }
-
+    
+    public function logout()
+    {
+        session()->remove('id_user');
+        return redirect()->to(site_url('login'));
+    }
 
 }
