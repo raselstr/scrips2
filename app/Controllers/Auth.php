@@ -13,6 +13,7 @@ class Auth extends BaseController
 
     public function loginProses()
     {    
+        $this->db = \Config\Database::connect();
         $post = $this->request->getPost();
         $query = $this->db->table('users')->getWhere(['user_email'=>$post['email']]);
         $user = $query->getRow();
