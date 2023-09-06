@@ -31,7 +31,16 @@ class Opd extends Migration
             ],
             'updated_at' => [
                 'type'      => 'DATETIME',
-                'null'      => true,
+                           'created_at' => [
+                'type'    => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
+            ],
+            'update_at' => [
+                'type'    => 'DATETIME',
+             ],
+            'delete_at' => [
+                'type'    => 'DATETIME',
+            ],
             ],
             'deleted_at' => [
                 'type'    => 'DATETIME',
