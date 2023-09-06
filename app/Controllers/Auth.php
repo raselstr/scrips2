@@ -8,15 +8,10 @@ class Auth extends BaseController
 {
     public function index()
     {
+        if(session('user_id')){
+            return redirect()->to(site_url('home'));
+        }
         return view('auth/login');
-    }
-
-    public function login()
-    {
-        // if(session('id_user')){
-        //     return redirect()->to(site_url('home'));
-        // }
-        // return view('auth/login');
     }
 
     public function loginProses()
@@ -27,7 +22,10 @@ class Auth extends BaseController
         $user = $query->getRow();
         if($user){
             if(password_verify($post['password'], $user->user_password)) {
-                $params = ['user_id'=> $user->user_id];
+                $params = [
+                    'user_id'=> $user->user_id,
+                    'user_nama'=> $user->user_nama,
+                ];
                 session()->set($params);
 
                 return redirect()->to(site_url('home'));
@@ -43,7 +41,7 @@ class Auth extends BaseController
     
     public function logout()
     {
-        session()->remove('id_user');
+        session()->remove('user_id');
         return redirect()->to(site_url('login'));
     }
 
