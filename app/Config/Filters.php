@@ -69,9 +69,6 @@ class Filters extends BaseConfig
                 'home',
                 'opds',
                 'pegawais/',
-
-
-            ]
-            ],
+            ]],
     ];
 }
