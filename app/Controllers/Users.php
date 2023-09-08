@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\UsersModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
 class Users extends ResourcePresenter
 {
     function __construct()
     {
-        $this->peg = new PegawaiModel();
-        $this->opd = new OpdModel();
+        $this->users = new UsersModel();
     }
     /**
      * Present a view of resource objects
@@ -51,7 +51,9 @@ class Users extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $data = $this->request->getPost();
+        $this->users->insert($data);
+        return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
     }
 
     /**
