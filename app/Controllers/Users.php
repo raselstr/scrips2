@@ -6,6 +6,11 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class Users extends ResourcePresenter
 {
+    function __construct()
+    {
+        $this->peg = new PegawaiModel();
+        $this->opd = new OpdModel();
+    }
     /**
      * Present a view of resource objects
      *
@@ -13,7 +18,7 @@ class Users extends ResourcePresenter
      */
     public function index()
     {
-        //
+        return view('auth/register');
     }
 
     /**
