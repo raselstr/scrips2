@@ -64,6 +64,8 @@ $routes->delete('pegawais/delete2','pegawais::delete2');
 
 $routes->resource('pegawais');
 
+$routes->presenter('users');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
