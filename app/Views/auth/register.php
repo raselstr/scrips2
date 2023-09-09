@@ -27,13 +27,25 @@
             <div class="login-brand">
               <img src="<?= base_url(); ?>templates/assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
+            
 
             <div class="card card-primary">
               <div class="card-header"><h4>Daftar User Baru</h4></div>
-
               <div class="card-body">
                 <form action="<?= site_url('users/create'); ?>" method="post" >
                   <?= csrf_field(); ?>
+                  <?php if(session()->getFlashdata('validation')) { ?>
+                      <div class="alert alert-danger alert-dismissible show fade">
+                        <div class="alert-body">
+                          <button class="close" data-dismiss="alert">
+                              <span>&times;</span>
+                          </button>
+                              <?php foreach (session()->getFlashdata('validation')as $items) :  ?>
+                                <ul><?= $items; ?></ul>
+                              <?php endforeach ?>
+                          </div>
+                      </div>
+                  <?php } ?>
                   <div class="form-group">
                     <label for="user_nama">Nama Lengkap</label>
                     <input id="user_nama" type="text" class="form-control" name="user_nama" autofocus>
@@ -44,8 +56,8 @@
                     <div class="invalid-feedback"></div>
                   </div>
 
-                  <div class="row">
-                    <div class="form-group col-6">
+                  
+                    <div class="form-group">
                       <label for="user_password" class="d-block">Password</label>
                       <input id="user_password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="user_password">
                       <div id="pwindicator" class="pwindicator">
@@ -53,11 +65,7 @@
                         <div class="label"></div>
                       </div>
                     </div>
-                    <div class="form-group col-6">
-                      <label for="password2" class="d-block">Password Confirmation</label>
-                      <input id="password2" type="password" class="form-control" name="password-confirm">
-                    </div>
-                  </div>
+                    
 
                   <!-- <div class="form-divider">
                     Your Home
@@ -100,9 +108,16 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      Register
-                    </button>
+                    <div class="row sm-gutters">
+                      <div class="col-6">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" te>
+                          Register
+                        </button>
+                      </div>
+                      <div class="col-6">
+                        <a href="<?= site_url('login'); ?>" class="btn btn-primary btn-lg btn-block">Batal</a>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>

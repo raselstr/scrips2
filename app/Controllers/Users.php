@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 use App\Models\UsersModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 
@@ -9,7 +10,7 @@ class Users extends ResourcePresenter
 {
     function __construct()
     {
-        $this->users = new UsersModel();
+        $usersmodel = new UsersModel();
     }
     /**
      * Present a view of resource objects
@@ -51,9 +52,20 @@ class Users extends ResourcePresenter
      */
     public function create()
     {
+        $usersmodel = new UsersModel();
         $data = $this->request->getPost();
-        $this->users->insert($data);
-        return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
+        $pass = $this->request->getPost('user_password');
+        // dd($data);
+        $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        $simpan = $usersmodel->insert($data);
+        // dd($simpan);
+        if($simpan){
+            return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
+        } else {
+            // dd($usersmodel->errors());
+            session()->setFlashdata('validation',$usersmodel->errors());
+            return redirect()->to(site_url('users'))->withInput();
+        }
     }
 
     /**
