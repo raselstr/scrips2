@@ -27,7 +27,7 @@ class UsersModel extends Model
         'user_nama'         => 'required|alpha_numeric_space',
         'user_email'        => 'required|valid_email|is_unique[users.user_email]',
         'user_password'     => 'required|min_length[3]',
-        // 'pass_confirm'      => 'required_with[user_password]|max_length[255]|matches[user_password]',
+        // 'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
     ];
     protected $validationMessages   = [
         'user_nama'    => [
@@ -40,8 +40,11 @@ class UsersModel extends Model
         ],
         'user_password' => [
             'required'              => 'Password tidak boleh kosong',
-            'min_length[3]'        => 'Panjang Password tidak boleh lebih dari 3',
+            // 'min_length[3]'         => 'Panjang Password tidak boleh lebih dari 3',
         ],
+        // 'pass_confirm' => [
+        //     'required_with[user_password]' => 'Password Tidak sama',
+        // ],
 
     ];
     protected $skipValidation       = false;

@@ -53,19 +53,32 @@ class Users extends ResourcePresenter
     public function create()
     {
         $usersmodel = new UsersModel();
-        $data = $this->request->getPost();
-        $pass = $this->request->getPost('user_password');
-        // dd($data);
-        $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
-        $simpan = $usersmodel->insert($data);
-        // dd($simpan);
-        if($simpan){
-            return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
-        } else {
-            // dd($usersmodel->errors());
-            session()->setFlashdata('validation',$usersmodel->errors());
-            return redirect()->to(site_url('users'))->withInput();
+
+        $rules = $usersmodel->validationRules;
+        // dd($rules);
+        if (! $this->validate($rules)){
+            return redirect()->back()->withInput();
+        }else{
+            $data = $this->request->getPost();
+            dd($data);
         }
+        // $simpan = $usersmodel->insert($data);
+        // dd($usersmodel->errors());
+
+        // $data = $this->request->getPost();
+        // $pass = $this->request->getPost('user_password');
+      
+        // $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        // $simpan = $usersmodel->insert($data);
+        // if($simpan){
+        //     return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
+        // } else {
+        //     // dd($usersmodel->errors());
+        //     session()->setFlashdata('validation',$usersmodel->errors());
+        //     return redirect()->back()->withInput();
+        // }
+
+
     }
 
     /**
