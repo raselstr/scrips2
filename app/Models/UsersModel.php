@@ -13,7 +13,7 @@ class UsersModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_nama','user_email','user_password','user_info'];
+    protected $allowedFields    = ['user_nama','user_email','user_password','user_info','user_active'];
 
     // Dates
     protected $useTimestamps = true;
@@ -24,18 +24,25 @@ class UsersModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'user_nama'         => 'required|max_length[30]|alpha_numeric_space|min_length[3]',
-        'user_email'        => 'required|max_length[254]|valid_email|is_unique[users.user_email]',
-        'user_password'     => 'required|max_length[255]|min_length[8]',
+        'user_nama'         => 'required|alpha_numeric_space',
+        'user_email'        => 'required|valid_email|is_unique[users.user_email]',
+        'user_password'     => 'required|min_length[3]',
         // 'pass_confirm'      => 'required_with[user_password]|max_length[255]|matches[user_password]',
     ];
     protected $validationMessages   = [
         'user_nama'    => [
-            'required'      => 'Nama tidak Boleh Kosong',
+            'required'              => 'Nama tidak Boleh Kosong',
+            'alpha_numeric_space'   => 'Tanpa menggunakan spesial karakter',
         ],
         'user_email' => [
-            'is_unique' => 'Sorry. That email has already been taken. Please choose another.',
+            'required'              => 'Email harus diisi dengan format email menggunakan @',
+            'is_unique'             => 'Sorry. That email has already been taken. Please choose another.',
         ],
+        'user_password' => [
+            'required'              => 'Password tidak boleh kosong',
+            'min_length[3]'        => 'Panjang Password tidak boleh lebih dari 3',
+        ],
+
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

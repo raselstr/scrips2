@@ -32,6 +32,10 @@ class Users extends Migration
                 'type' => 'TEXT',
                 'null' => true,
             ],
+            'user_active' => [
+                'type' => 'INT',
+                'default' => 0,
+            ],
             'created_at'        => [
                 'type'          => 'TIMESTAMP',
                 'default'       => new RawSql('CURRENT_TIMESTAMP'),
