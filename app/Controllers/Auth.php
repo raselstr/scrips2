@@ -25,6 +25,7 @@ class Auth extends BaseController
                 $params = [
                     'user_id'=> $user->user_id,
                     'user_nama'=> $user->user_nama,
+                    'user_active' => $user->user_active,
                 ];
                 session()->set($params);
 
