@@ -27,7 +27,7 @@ class UsersModel extends Model
         'user_nama'         => 'required|alpha_numeric_space',
         'user_email'        => 'required|valid_email|is_unique[users.user_email]',
         'user_password'     => 'required|min_length[3]',
-        // 'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
+        'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
     ];
     protected $validationMessages   = [
         'user_nama'    => [
@@ -40,11 +40,11 @@ class UsersModel extends Model
         ],
         'user_password' => [
             'required'              => 'Password tidak boleh kosong',
-            // 'min_length[3]'         => 'Panjang Password tidak boleh lebih dari 3',
+            'min_length'         => 'Panjang Password tidak boleh lebih dari {param}',
         ],
-        // 'pass_confirm' => [
-        //     'required_with[user_password]' => 'Password Tidak sama',
-        // ],
+        'pass_confirm' => [
+            'matches' => 'Password Tidak sama',
+        ],
 
     ];
     protected $skipValidation       = false;
@@ -52,12 +52,14 @@ class UsersModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
+    protected $beforeInsert   = ['hashPassword'];
+    protected $afterInsert    = ['hashPassword'];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    
 }

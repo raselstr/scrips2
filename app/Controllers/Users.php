@@ -8,10 +8,11 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class Users extends ResourcePresenter
 {
-    function __construct()
+    public function __construct()
     {
-        $usersmodel = new UsersModel();
+        helper(['url','form']);
     }
+    // protected $helpers = ['form'];
     /**
      * Present a view of resource objects
      *
@@ -19,6 +20,7 @@ class Users extends ResourcePresenter
      */
     public function index()
     {
+        
         return view('auth/register');
     }
 
@@ -53,29 +55,60 @@ class Users extends ResourcePresenter
     public function create()
     {
         $usersmodel = new UsersModel();
+        $data = $this->request->getPost();
+        $valid = $this->validate($usersmodel->getValidationRules());
+        // dd($valid);
 
-        $rules = $usersmodel->validationRules;
-        // dd($rules);
-        if (! $this->validate($rules)){
-            return redirect()->back()->withInput();
-        }else{
-            $data = $this->request->getPost();
-            dd($data);
+
+        if(!$valid){
+            return view('auth/register',['valid'=>$this->validator]);
+        } else {
+            $pass = $this->request->getPost('user_password');
+            $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+            $usersmodel->insert($data);
         }
+
+        // if (! $this->validate($usersmodel->getValidationRules())) {
+        //     // session()->setFlashdata('errors',$this->validator->listErrors());
+        //     dd($usersmodel->errors());
+        //     return redirect()->back();
+        // }
+
+        // $simpan = $usersmodel->insert($data);
+        // if(!$simpan){
+        //     session()->setFlashdata('validation',$usersmodel->errors());
+        //     return redirect()->back()->withInput();
+        // } else {
+        //     $pass = $this->request->getPost('user_password');
+        //     $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        //     return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
+        // }
+
+        
+        
+        // else{
+        //     echo 'Berhasil';
+        //     // $data = $this->request->getPost();
+        //     // dd($data);
+        // }
         // $simpan = $usersmodel->insert($data);
         // dd($usersmodel->errors());
 
         // $data = $this->request->getPost();
-        // $pass = $this->request->getPost('user_password');
+        
       
-        // $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        // 
         // $simpan = $usersmodel->insert($data);
-        // if($simpan){
-        //     return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
-        // } else {
-        //     // dd($usersmodel->errors());
+        // if(!$simpan){
         //     session()->setFlashdata('validation',$usersmodel->errors());
         //     return redirect()->back()->withInput();
+        // //     
+        // } else {
+        //     $pass = $this->request->getPost('user_password');
+        //     $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        // //     // dd($usersmodel->errors());
+        // return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
+        // //     
         // }
 
 

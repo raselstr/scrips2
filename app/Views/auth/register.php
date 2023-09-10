@@ -32,6 +32,7 @@
             <div class="card card-primary">
               <div class="card-header"><h4>Daftar User Baru</h4></div>
               <div class="card-body">
+                
                 <form action="<?= site_url('users/create'); ?>" method="post" >
                   <?= csrf_field(); ?>
                   <?php if(session()->getFlashdata('validation')) { ?>
@@ -41,14 +42,17 @@
                               <span>&times;</span>
                           </button>
                               <?php foreach (session()->getFlashdata('validation')as $items) :  ?>
-                                <ul><?= $items; ?></ul>
+                                <ul>
+                                  <li><?= $items; ?></li>
+                                </ul>
                               <?php endforeach ?>
                           </div>
                       </div>
                   <?php } ?>
                   <div class="form-group">
                     <label for="user_nama">Nama Lengkap</label>
-                    <input id="user_nama" type="text" class="form-control" name="user_nama" autofocus>
+                    <input id="user_nama" type="text" class="form-control" name="user_nama"  value="<?= set_value('user_nama'); ?>" autofocus>
+                    <span class="text-danger"><?= isset($valid) ? display_error($valid,'user_nama') : '' ?></span>
                   </div>
                   <div class="form-group">
                     <label for="user_email">Email</label>
@@ -56,8 +60,8 @@
                     <div class="invalid-feedback"></div>
                   </div>
 
-                  
-                    <div class="form-group">
+                  <div class="row">
+                    <div class="form-group col-6">
                       <label for="user_password" class="d-block">Password</label>
                       <input id="user_password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="user_password">
                       <div id="pwindicator" class="pwindicator">
@@ -65,6 +69,16 @@
                         <div class="label"></div>
                       </div>
                     </div>
+                    <div class="form-group col-6">
+                      <label for="pass_confirm" class="d-block">Confirm Password</label>
+                      <input id="pass_confirm" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="pass_confirm">
+                      <div id="pwindicator" class="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                      </div>
+                    </div>
+                  </div>
+
                     
 
                   <!-- <div class="form-divider">
