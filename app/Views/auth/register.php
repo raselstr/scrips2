@@ -32,29 +32,17 @@
             <div class="card card-primary">
               <div class="card-header"><h4>Daftar User Baru</h4></div>
               <div class="card-body">
-                <?php $errors = session()->getFlashdata('validation') ?>
-                <?php if($errors) { ?>
-                      <div class="alert alert-danger alert-dismissible show fade">
-                        <div class="alert-body">
-                          <button class="close" data-dismiss="alert">
-                              <span>&times;</span>
-                          </button>
-                              <?php foreach ($errors as $items) :  ?>
-                                <ul>
-                                  <li><?= $items; ?></li>
-                                </ul>
-                              <?php endforeach ?>
-                          </div>
-                      </div>
-                  <?php } ?>
+               
+              <?php $errors = session()->getFlashdata('validation') ?>
 
                 <form action="<?= site_url('users/create'); ?>" method="post" >
                   <?= csrf_field(); ?>
                   <div class="form-group">
                     <label for="user_nama">Nama Lengkap</label>
-                    <input id="user_nama" type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?> " name="user_nama"  value="<?= set_value('user_nama'); ?>" >
+                    <input id="user_nama" type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?>" name="user_nama"  value="<?= set_value('user_nama'); ?>" >
                     <div class="invalid-feedback">
                         <?= isset($errors['user_nama']) ? $errors['user_nama'] : null ; ?>
+                        
                     </div>
 
                   </div>

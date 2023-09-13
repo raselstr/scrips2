@@ -64,5 +64,36 @@ class UsersModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    
+    // public function validateData($data)
+    // {
+    //     if (!$this->validate($this->validationRules, $this->validationMessages)) {
+    //         return $this->validation->getErrors();
+    //     } else {
+    //         return null; // Data valid
+    //     }
+    // }
+
+    // public function saveUser($data)
+    // {
+    //     $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+    //     return $this->save($data);
+    // }
+
+    // protected function hashPassword(array $data)
+    // {
+    //     if (isset($data['data']['password'])) {
+    //         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+    //     }
+    //     return $data;
+    // }
+    // // protected function hashPassword(array $data)
+    // // {
+    // //     if (isset($data['data']['password'])) {
+    // //         $data['data']['password_hash'] = password_hash($data['data']['password'], PASSWORD_BCRYPT);
+    // //         unset($data['data']['password']);
+    // //         unset($data['data']['password_confirm']);
+    // //     }
+
+    // //     return $data;
+    // }
 }
