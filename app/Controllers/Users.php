@@ -56,17 +56,17 @@ class Users extends ResourcePresenter
     {
         $usersmodel = new UsersModel();
         $data = $this->request->getPost();
-        $valid = $this->validate($usersmodel->getValidationRules());
+        // $valid = $this->validate($usersmodel->getValidationRules());
         // dd($valid);
 
 
-        if(!$valid){
-            return view('auth/register',['valid'=>$this->validator]);
-        } else {
-            $pass = $this->request->getPost('user_password');
-            $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
-            $usersmodel->insert($data);
-        }
+        // if(!$valid){
+        //     return view('auth/register',['valid'=>$this->validator]);
+        // } else {
+        //     $pass = $this->request->getPost('user_password');
+        //     $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+        //     $usersmodel->insert($data);
+        // }
 
         // if (! $this->validate($usersmodel->getValidationRules())) {
         //     // session()->setFlashdata('errors',$this->validator->listErrors());
@@ -98,18 +98,20 @@ class Users extends ResourcePresenter
         
       
         // 
-        // $simpan = $usersmodel->insert($data);
-        // if(!$simpan){
-        //     session()->setFlashdata('validation',$usersmodel->errors());
-        //     return redirect()->back()->withInput();
-        // //     
-        // } else {
-        //     $pass = $this->request->getPost('user_password');
-        //     $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
-        // //     // dd($usersmodel->errors());
-        // return redirect()->to(site_url('login'))->with('success','Data Berhasil disimpan');
-        // //     
-        // }
+        $simpan = $usersmodel->save($data);
+        if(!$simpan){
+            // session()->setFlashdata('validation',$usersmodel->errors());
+                // dd($usersmodel->errors());
+
+            return redirect()->back()->withInput()->with('validation',$usersmodel->errors());
+        //     
+        } else {
+            $pass = $this->request->getPost('user_password');
+            $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
+            // $usersmodel->insert($data);
+            return redirect()->to(site_url('login'))->with('success','User Berhasil dibuat');
+        //     
+        }
 
 
     }

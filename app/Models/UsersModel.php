@@ -26,7 +26,7 @@ class UsersModel extends Model
     protected $validationRules      = [
         'user_nama'         => 'required|alpha_numeric_space',
         'user_email'        => 'required|valid_email|is_unique[users.user_email]',
-        'user_password'     => 'required|min_length[3]',
+        'user_password'     => 'required|min_length[3]|max_length[20]',
         'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
     ];
     protected $validationMessages   = [
@@ -36,14 +36,17 @@ class UsersModel extends Model
         ],
         'user_email' => [
             'required'              => 'Email harus diisi dengan format email menggunakan @',
-            'is_unique'             => 'Sorry. That email has already been taken. Please choose another.',
+            'valid_email'           => 'Email tidak Valid',
+            'is_unique'             => 'Maaf. Email sudah digunakan. Silahkan gunakan email lainnya.',
         ],
         'user_password' => [
             'required'              => 'Password tidak boleh kosong',
-            'min_length'         => 'Panjang Password tidak boleh lebih dari {param}',
+            'min_length'            => '{field} minimal {param} karakter',
+            'max_length'            => 'Panjang {field} tidak boleh melebihi {param}',
         ],
         'pass_confirm' => [
-            'matches' => 'Password Tidak sama',
+            'required_with'         => 'Kompirmasi {field} harus diisi',
+            'matches'               => 'Password Tidak sama dengan {param}',
         ],
 
     ];
@@ -52,8 +55,8 @@ class UsersModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['hashPassword'];
-    protected $afterInsert    = ['hashPassword'];
+    protected $beforeInsert   = [];
+    protected $afterInsert    = [];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];

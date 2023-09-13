@@ -32,16 +32,14 @@
             <div class="card card-primary">
               <div class="card-header"><h4>Daftar User Baru</h4></div>
               <div class="card-body">
-                
-                <form action="<?= site_url('users/create'); ?>" method="post" >
-                  <?= csrf_field(); ?>
-                  <?php if(session()->getFlashdata('validation')) { ?>
+                <?php $errors = session()->getFlashdata('validation') ?>
+                <?php if($errors) { ?>
                       <div class="alert alert-danger alert-dismissible show fade">
                         <div class="alert-body">
                           <button class="close" data-dismiss="alert">
                               <span>&times;</span>
                           </button>
-                              <?php foreach (session()->getFlashdata('validation')as $items) :  ?>
+                              <?php foreach ($errors as $items) :  ?>
                                 <ul>
                                   <li><?= $items; ?></li>
                                 </ul>
@@ -49,33 +47,47 @@
                           </div>
                       </div>
                   <?php } ?>
+
+                <form action="<?= site_url('users/create'); ?>" method="post" >
+                  <?= csrf_field(); ?>
                   <div class="form-group">
                     <label for="user_nama">Nama Lengkap</label>
-                    <input id="user_nama" type="text" class="form-control" name="user_nama"  value="<?= set_value('user_nama'); ?>" autofocus>
-                    <span class="text-danger"><?= isset($valid) ? display_error($valid,'user_nama') : '' ?></span>
+                    <input id="user_nama" type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?> " name="user_nama"  value="<?= set_value('user_nama'); ?>" >
+                    <div class="invalid-feedback">
+                        <?= isset($errors['user_nama']) ? $errors['user_nama'] : null ; ?>
+                    </div>
+
                   </div>
                   <div class="form-group">
                     <label for="user_email">Email</label>
-                    <input id="user_email" type="email" class="form-control" name="user_email">
-                    <div class="invalid-feedback"></div>
+                    <input id="user_email" type="text" class="form-control <?= isset($errors['user_email']) ? 'is-invalid' : null ; ?>" name="user_email" value="<?= set_value('user_email'); ?>">
+                    <div class="invalid-feedback">
+                        <?= isset($errors['user_email']) ? $errors['user_email'] : null ; ?>        
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="user_password" class="d-block">Password</label>
-                      <input id="user_password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="user_password">
+                      <input id="user_password" type="password" class="form-control <?= isset($errors['user_password']) ? 'is-invalid' : null ; ?> pwstrength" data-indicator="pwindicator" name="user_password" value="<?= set_value('user_password'); ?>">
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>
                       </div>
+                      <div class="invalid-feedback">
+                        <?= isset($errors['user_password']) ? $errors['user_password'] : null ; ?>        
+                    </div>
                     </div>
                     <div class="form-group col-6">
                       <label for="pass_confirm" class="d-block">Confirm Password</label>
-                      <input id="pass_confirm" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="pass_confirm">
+                      <input id="pass_confirm" type="password" class="form-control <?= isset($errors['pass_confirm']) ? 'is-invalid' : null ; ?> pwstrength" data-indicator="pwindicator" name="pass_confirm" value="<?= set_value('pass_confirm'); ?>">
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>
                       </div>
+                      <div class="invalid-feedback">
+                        <?= isset($errors['pass_confirm']) ? $errors['pass_confirm'] : null ; ?>        
+                    </div>
                     </div>
                   </div>
 
