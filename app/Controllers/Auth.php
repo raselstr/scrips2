@@ -28,7 +28,7 @@ class Auth extends BaseController
                     'user_active' => $user->user_active,
                 ];
                 session()->set($params);
-
+                // dd(session()->user_nama);
                 return redirect()->to(site_url('home'));
             } else {
                 return redirect()->back()->with('error','Password tidak sesuai');

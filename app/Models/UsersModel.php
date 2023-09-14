@@ -22,34 +22,34 @@ class UsersModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [
-        'user_nama'         => 'required|alpha_numeric_space',
-        'user_email'        => 'required|valid_email|is_unique[users.user_email]',
-        'user_password'     => 'required|min_length[3]|max_length[20]',
-        'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
-    ];
-    protected $validationMessages   = [
-        'user_nama'    => [
-            'required'              => 'Nama tidak Boleh Kosong',
-            'alpha_numeric_space'   => 'Tanpa menggunakan spesial karakter',
-        ],
-        'user_email' => [
-            'required'              => 'Email harus diisi dengan format email menggunakan @',
-            'valid_email'           => 'Email tidak Valid',
-            'is_unique'             => 'Maaf. Email sudah digunakan. Silahkan gunakan email lainnya.',
-        ],
-        'user_password' => [
-            'required'              => 'Password tidak boleh kosong',
-            'min_length'            => '{field} minimal {param} karakter',
-            'max_length'            => 'Panjang {field} tidak boleh melebihi {param}',
-        ],
-        'pass_confirm' => [
-            'required_with'         => 'Kompirmasi {field} harus diisi',
-            'matches'               => 'Password Tidak sama dengan {param}',
-        ],
+    // // Validation
+    // protected $validationRules      = [
+    //     'user_nama'         => 'required|alpha_numeric_space',
+    //     'user_email'        => 'required|valid_email|is_unique[users.user_email]',
+    //     'user_password'     => 'required|min_length[3]|max_length[60]',
+    //     'pass_confirm'      => 'required_with[user_password]|matches[user_password]',
+    // ];
+    // protected $validationMessages   = [
+    //     'user_nama'    => [
+    //         'required'              => 'Nama tidak Boleh Kosong',
+    //         'alpha_numeric_space'   => 'Tanpa menggunakan spesial karakter',
+    //     ],
+    //     'user_email' => [
+    //         'required'              => 'Email harus diisi dengan format email menggunakan @',
+    //         'valid_email'           => 'Email tidak Valid',
+    //         'is_unique'             => 'Maaf. Email sudah digunakan. Silahkan gunakan email lainnya.',
+    //     ],
+    //     'user_password' => [
+    //         'required'              => 'Password tidak boleh kosong',
+    //         'min_length'            => '{field} minimal {param} karakter',
+    //         'max_length'            => 'Panjang {field} tidak boleh melebihi {param}',
+    //     ],
+    //     'pass_confirm' => [
+    //         'required_with'         => 'Kompirmasi {field} harus diisi',
+    //         'matches'               => 'Password Tidak sama dengan {param}',
+    //     ],
 
-    ];
+    // ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
