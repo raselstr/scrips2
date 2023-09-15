@@ -39,7 +39,7 @@
                   <?= csrf_field(); ?>
                   <div class="form-group">
                     <label for="user_nama">Nama Lengkap</label>
-                    <input id="user_nama" type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?>" name="user_nama"  value="<?= set_value('user_nama'); ?>" >
+                    <input id="user_nama" type="text" class="form-control <?= isset($errors['user_nama']) ? 'is-invalid' : null ; ?>" name="user_nama"  value="<?= old('user_nama'); ?>" >
                     <div class="invalid-feedback">
                         <?= isset($errors['user_nama']) ? $errors['user_nama'] : null ; ?>
                         
@@ -48,7 +48,7 @@
                   </div>
                   <div class="form-group">
                     <label for="user_email">Email</label>
-                    <input id="user_email" type="text" class="form-control <?= isset($errors['user_email']) ? 'is-invalid' : null ; ?>" name="user_email" value="<?= set_value('user_email'); ?>">
+                    <input id="user_email" type="text" class="form-control <?= isset($errors['user_email']) ? 'is-invalid' : null ; ?>" name="user_email" value="<?= old('user_email'); ?>">
                     <div class="invalid-feedback">
                         <?= isset($errors['user_email']) ? $errors['user_email'] : null ; ?>        
                     </div>
@@ -57,7 +57,7 @@
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="user_password" class="d-block">Password</label>
-                      <input id="user_password" type="password" class="form-control <?= isset($errors['user_password']) ? 'is-invalid' : null ; ?> pwstrength" data-indicator="pwindicator" name="user_password" value="<?= set_value('user_password'); ?>">
+                      <input id="user_password" type="password" class="form-control <?= isset($errors['user_password']) ? 'is-invalid' : null ; ?> " data-indicator="pwindicator" name="user_password" value="<?= old('user_password'); ?>">
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-group col-6">
                       <label for="pass_confirm" class="d-block">Confirm Password</label>
-                      <input id="pass_confirm" type="password" class="form-control <?= isset($errors['pass_confirm']) ? 'is-invalid' : null ; ?> pwstrength" data-indicator="pwindicator" name="pass_confirm" value="<?= set_value('pass_confirm'); ?>">
+                      <input id="pass_confirm" type="password" class="form-control <?= isset($errors['pass_confirm']) ? 'is-invalid' : null ; ?> " data-indicator="pwindicator" name="pass_confirm" value="<?= old('pass_confirm'); ?>">
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>
@@ -81,7 +81,7 @@
 
                     
 
-                  <!-- <div class="form-divider">
+                  <!-- <div class="form-divider pwstrength">
                     Your Home
                   </div>
                   <div class="row">

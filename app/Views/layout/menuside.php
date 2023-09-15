@@ -4,6 +4,7 @@
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="<?= site_url('pegawais'); ?>">Pegawai</a></li>
         <li><a class="nav-link" href="<?= site_url('opds'); ?>">OPD</a></li>
+        <li><a class="nav-link" href="<?= site_url('users'); ?>">Users</a></li>
     </ul>
 </li>
 <li class="menu-header">DATA</li>

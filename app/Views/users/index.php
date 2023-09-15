@@ -7,10 +7,10 @@
 <?= $this->section('content'); ?>
   <section class="section">
     <div class="section-header">
-      <h1>Organisasi Perangkat Daerah</h1>
+      <h1>Data User</h1>
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="<?= site_url('/'); ?>">Dashboard</a></div>
-        <div class="breadcrumb-item">Data Perjadin</div>
+        <div class="breadcrumb-item">Data User</div>
       </div>
     </div>
 
@@ -42,9 +42,9 @@
         <div class="card">
           <div class="card-header">
             <div class="buttons">
-              <a href="<?= site_url('opds/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
+              <a href="<?= site_url('users/new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-file"></i> Tambah Data</a>
             </div>
-            <h4>Daftar Organisasi Perangkat Daerah</h4>
+            <h4>Daftar User</h4>
             <div class="card-header-action">
               <a href="<?= site_url('opds/import'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Import XLS</a>
               <a href="<?= site_url('opds/export'); ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Export XLS</a>
@@ -61,15 +61,15 @@
                   <th>Created At</th>
                    <th>Action</th>
                 </tr>
-                <?php foreach ($opd as $key => $value) : ?>
+                <?php foreach ($users as $key => $value) : ?>
                 <tr>
                   <td><?= $key + 1; ?></td>
-                  <td><?= $value->opd_kode; ?></td>
-                  <td><?= $value->opd_nama; ?></td>
-                  <td><?= $value->created_at; ?></td>
+                  <td><?= $value->user_nama; ?></td>
+                  <td><?= $value->user_email; ?></td>
+                  <td><?= $value->user_password; ?></td>
                   <td>
-                    <a href="<?= site_url('opds/edit/' .$value->opd_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
-                    <form action="<?= site_url('opds/delete/' .$value->opd_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
+                    <a href="<?= site_url('users/edit/' .$value->user_id); ?>" class="btn btn-icon btn-sm btn-info"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="<?= site_url('users/delete/' .$value->user_id); ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin menghapus akan dihapus')">
                       <?= csrf_field(); ?>
                       <button class="btn btn-danger btn-sm" ><i class="fas fa-trash" ></i></a></button>
                     </form>

@@ -8,11 +8,7 @@ use CodeIgniter\RESTful\ResourcePresenter;
 
 class Users extends ResourcePresenter
 {
-    public function __construct()
-    {
-        helper(['url','form']);
-    }
-    // protected $helpers = ['form'];
+    
     /**
      * Present a view of resource objects
      *
@@ -20,8 +16,10 @@ class Users extends ResourcePresenter
      */
     public function index()
     {
-        
-        return view('auth/register');
+        $UsersModel = new UsersModel();
+
+        $data['users'] = $UsersModel->findAll();
+        return view('users/index', $data);
     }
 
     /**
@@ -43,7 +41,7 @@ class Users extends ResourcePresenter
      */
     public function new()
     {
-        //
+        return view('auth/register');
     }
 
     /**
@@ -54,7 +52,7 @@ class Users extends ResourcePresenter
      */
     public function create()
     {
-        $userModel = new UsersModel();
+        $UsersModel = new UsersModel();
         // register OK
         if (!$this->validate([
             'user_nama' => [
@@ -88,13 +86,11 @@ class Users extends ResourcePresenter
                 ]
             ],
         ])) {
-            // session()->setFlashdata('validation', $this->validator->getErrors());
-            // dd($this->validator->getErrors());
-            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         
-        $userModel->save([
+        $UsersModel->save([
             'user_nama'     => $this->request->getPost('user_nama'),
             'user_email'    => $this->request->getPost('user_email'),
             'user_password' => password_hash($this->request->getVar('user_password'), PASSWORD_BCRYPT),
@@ -104,42 +100,26 @@ class Users extends ResourcePresenter
     // -----------------------------------------ok---------------------------------------------
 
       
-        // // Bisa 2 ------------------------------------------------------------------------------------------------------------
+        // // Bisa tp tidak bisa menyimpan ke DB penyebabnya Password_hash------------------------------------------
         // $validationErrors = $this->validate($userModel->getValidationRules(),$userModel->getValidationMessages());
 
         // if (!$validationErrors) {
         //     return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         // }
-
-        // $data = [
+        // // $data = $this->request->getPost();  
+        
+        // $userModel->save([
         //     'user_nama'     => $this->request->getPost('user_nama'),
         //     'user_email'    => $this->request->getPost('user_email'),
+        //     // 'user_password' => $this->request->getPost('user_password'),
         //     'user_password' => password_hash($this->request->getVar('user_password'), PASSWORD_BCRYPT),
-        // ];
+        // ]);
+        // // $userModel->save($data);
         // // dd($data);
-        // $userModel->save($data);
 
         // return redirect()->to(site_url('login'))->with('success', 'User Berhasil dibuat');
-        // 
+        
         // // --------------------------------akhir--------------------------------------------------------
-
-
-
-
-        // // fix tinggal hash password
-        // $simpan = $usersmodel->save($data);
-        // if(!$simpan){
-            
-        //     // dd($usersmodel->errors());
-        //     return redirect()->back()->withInput()->with('validation',$usersmodel->errors());
-        // } else {
-            
-        //     $pass = $this->request->getPost('user_password');
-        //     $data['user_password'] = password_hash($pass, PASSWORD_BCRYPT);
-        //     $usersmodel->save($data);
-        //     return redirect()->to(site_url('login'))->with('success','User Berhasil dibuat');
-        // }
-
 
     }
 

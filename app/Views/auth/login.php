@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="<?= site_url('users'); ?>">Create One</a>
+              Belum Punya Akun silahkan klik ? <a href="<?= site_url('users/new'); ?>">Buat User</a>
             </div>
             <div class="simple-footer">
               Copyright &copy; Stisla 2018
